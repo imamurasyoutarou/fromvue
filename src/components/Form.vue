@@ -2,8 +2,7 @@
   <div>
     Formページ
     <HeadComp></HeadComp>
-    <TextareaComp></TextareaComp>
-    <StringComp></StringComp>
+    <component :is="isComponent"></component>
     <button v-on:click="buttonAction">{{button}}</button>
   </div>
 </template>
@@ -16,13 +15,12 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Form",
-  data() {
-    return {
-      button: "確認"
-    };
-  },
   methods: mapActions("Form", {
     buttonAction: "buttonAction"
+  }),
+  computed: mapGetters("Form", {
+    button: "getButton",
+    isComponent: "getComponent"
   }),
   components: {
     HeadComp,
