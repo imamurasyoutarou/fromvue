@@ -10,7 +10,7 @@ export default {
   name: "textareaComp",
   data() {
     return {
-      error: "入力は必須です"
+      error: "入力は必須です。"
     };
   }
 };
