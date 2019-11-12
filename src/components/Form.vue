@@ -1,8 +1,9 @@
 <template>
   <div>
-    Formページ
+    お問い合わせフォーム
     <HeadComp></HeadComp>
     <component :is="isComponent"></component>
+    <p></p>
     <button v-on:click="buttonAction">{{button}}</button>
   </div>
 </template>
