@@ -1,10 +1,13 @@
 <template>
   <div>
-    お問い合わせフォーム
-    <HeadComp></HeadComp>
+    <h1>画像</h1>
+    <HeadComp class="header"></HeadComp>
     <component :is="isComponent"></component>
     <p></p>
     <button v-on:click="buttonAction">{{button}}</button>
+    <div v-if="count==1">
+      <button v-on:click="editbuttonAction">{{editbutton}}</button>
+    </div>
   </div>
 </template>
 
@@ -17,11 +20,14 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Form",
   methods: mapActions("Form", {
-    buttonAction: "buttonAction"
+    buttonAction: "buttonAction",
+    editbuttonAction: "editbuttonAction"
   }),
   computed: mapGetters("Form", {
     button: "getButton",
-    isComponent: "getComponent"
+    isComponent: "getComponent",
+    editbutton: "geteditButton",
+    count: "getCount"
   }),
   components: {
     HeadComp,
@@ -31,5 +37,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.header {
+  background-color: #e1e1e1;
+  width: 700;
+}
 </style>

@@ -8,15 +8,21 @@ const Form = {
     namespaced: true,
     state: {
         button: ["確認", "送信", "戻る"],
+        editbutton: "編集",
         component: ["TextareaComp", "StringComp"]
     },
     mutations: {},
     actions: {
         buttonAction({ commit, state, rootState }) {
             console.log("buttonAction")
-            if (rootState.errorFlag) {
+            if (rootState.errorFlag &&
+                rootState.errorFlag2 &&
+                rootState.errorFlag3 &&
+                rootState.errorFlag4 &&
+                rootState.errorFlag5) {
                 commit('setStepCount', null, { root: true })//rootへのアクセス
-            } if (rootState.stepCount == 2) {
+            }
+            if (rootState.stepCount == 2) {
                 //お問い合わせ内容の送信
                 console.log(rootState.name)
                 console.log(rootState.firigana)
@@ -52,7 +58,12 @@ const Form = {
                 rootState.errorFlag5 = false
                 rootState.ischecked = false
             }
+        }, editbuttonAction({ commit, state, rootState }) {
+            if (rootState.stepCount == 1) {
+                commit('setDownCount', null, { root: true })
+            }
         }
+
     },
     //ボタンの繊維
     getters: {
@@ -61,6 +72,15 @@ const Form = {
         },
         getComponent(state, getters, rootState) {
             return state.component[rootState.stepCount]
+        },
+        geteditButton(state, getters, rootState) {
+            if (rootState.stepCount == 1) {
+                return state.editbutton
+            } else {
+                return null
+            }
+        }, getCount(state, getters, rootState) {
+            return rootState.stepCount
         }
     }
 }
@@ -68,7 +88,7 @@ const Form = {
 //ヘッダーの繊維
 const Head = {
     state: {
-        title: ["感想を入力", "確認画面", "送信完了"]
+        title: ["お問い合わせフォーム", "確認画面", "送信完了"]
     },
     mutations: {},
     actions: {},
@@ -82,7 +102,7 @@ const Head = {
 const Textarea = {
     namespaced: true,
     state: {
-        errorMsg: "入力は必須です",
+        errorMsg: "※の入力は必須です",
     },
     getters: {
         getError(state, getters, rootState) {
@@ -146,6 +166,7 @@ const String = {
 
 export default new Vuex.Store({
     state: {
+        editbutton: null,
         stepCount: 0,
         impression: "",
         errorFlag: false,//trueなら通過
@@ -170,6 +191,10 @@ export default new Vuex.Store({
         setStepCount(state) {
             console.log("rootsetStepCount")
             state.stepCount++
+        },
+        setDownCount(state) {
+            console.log("rootsetDownCount")
+            state.stepCount--
         },
         updateName(state, value) {
             state.name = value

@@ -2,17 +2,18 @@
   <from>
     <p class="error">{{error}}</p>
     <p>名前</p>
-    <input type="text" v-model="name" />
+    <input type="text" v-model="name" @blur="nameBlur()" />
+    <p class="error">{{nameerror}}</p>
     <p>ふりがな</p>
     <input
       type="text"
       name="kana"
       v-model="firigana"
-      placeholder="セイメイ"
-      pattern="[ァ-ヴー\s ]+"
-      title="カタカナ"
-      required
+      placeholder="せいめい"
+      title="ふりがな"
+      @blur="firiganaBlur()"
     />
+    <p class="error">{{firiganaerror}}</p>
     <p>社名</p>
     <input type="text" v-model="company" />
     <p>メールアドレス</p>
@@ -20,12 +21,11 @@
       type="text"
       name="email"
       v-model="email"
-      style="ime-mode:disabled"
       placeholder="localname@domain.com"
-      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
       title="メールアドレス"
-      required
+      @blur="emailBlur()"
     />
+    <p class="error">{{emailerror}}</p>
     <p>郵便番号</p>
     <input
       type="text"
@@ -55,9 +55,7 @@
       v-model="phone"
       style="ime-mode:disabled"
       placeholder="090-1234-5678"
-      pattern="\d{2,4}-?\d{3,4}-?\d{3,4}"
       title="電話番号"
-      required
     />
     <p>どの製品について</p>
     <select name="prefecture" v-model="selected">
@@ -67,9 +65,11 @@
       <option>その他</option>
     </select>
     <p>お問い合わせ件名</p>
-    <input type="text" v-model="subject" />
+    <input type="text" v-model="subject" @blur="subjectBlur()" />
+    <p class="error">{{subjecterror}}</p>
     <p>お問い合わせ内容</p>
-    <textarea v-model="impression"></textarea>
+    <textarea v-model="impression" @blur="impressionBlur()"></textarea>
+    <p class="error">{{impressionerror}}</p>
     <p></p>
     <input
       type="checkbox"
@@ -87,6 +87,55 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "textareaComp",
+  data() {
+    return {
+      nameerror: "",
+      firiganaerror: "",
+      emailerror: "",
+      subjecterror: "",
+      impressionerror: ""
+    };
+  },
+  methods: {
+    nameBlur() {
+      if (this.name == false) {
+        this.nameerror = "エラー";
+      } else {
+        this.nameerror = "";
+      }
+    },
+    firiganaBlur() {
+      const reg = /^[ぁ-ん]+$/;
+      if (!reg.test(this.firigana) || this.firigana == false) {
+        this.firiganaerror = "エラー";
+      } else {
+        this.firiganaerror = "";
+      }
+    },
+    emailBlur() {
+      const reg = /^\S+@\S+\.\S+$/;
+      if (!reg.test(this.email) || this.email == false) {
+        this.emailerror = "エラー";
+      } else {
+        this.emailerror = "";
+      }
+    },
+    subjectBlur() {
+      if (this.subject == false) {
+        this.subjecterror = "エラー";
+      } else {
+        this.subjecterror = "";
+      }
+    },
+    impressionBlur() {
+      if (this.impression == false) {
+        this.impressionerror = "エラー";
+      } else {
+        this.impressionerror = "";
+      }
+    }
+  },
+
   computed: {
     name: {
       get() {
