@@ -40,8 +40,9 @@ const Form = {
                 router.push('/')
                 rootState.stepCount = 0
                 rootState.impression = ''
+                rootState.surname = ''
                 rootState.name = ''
-                rootState.firigana = ''
+                rootState.surnamefirigana = ''
                 rootState.company = ''
                 rootState.email = ''
                 rootState.postnumber1 = ''
@@ -102,7 +103,7 @@ const Head = {
 const Textarea = {
     namespaced: true,
     state: {
-        errorMsg: "※の入力は必須です",
+        errorMsg: "必須項目の入力漏れがあります",
     },
     getters: {
         getError(state, getters, rootState) {
@@ -111,6 +112,8 @@ const Textarea = {
                 rootState.errorFlag3 &&
                 rootState.errorFlag4 &&
                 rootState.errorFlag5 &&
+                rootState.errorFlag6 &&
+                rootState.errorFlag7 &&
                 rootState.ischecked) {
                 return null
             } else {
@@ -126,8 +129,14 @@ const String = {
         getString(state, getters, rootState) {
             return rootState.impression
         },
+        getSurName(state, getters, rootState) {
+            return rootState.surname
+        },
         getName(state, getters, rootState) {
             return rootState.name
+        },
+        getSurnameFirigana(state, getters, rootState) {
+            return rootState.surnamefirigana
         },
         getFirigana(state, getters, rootState) {
             return rootState.firigana
@@ -174,7 +183,11 @@ export default new Vuex.Store({
         errorFlag3: false,//trueなら通過
         errorFlag4: false,//trueなら通過
         errorFlag5: false,//trueなら通過
+        errorFlag6: false,//trueなら通過
+        errorFlag7: false,//trueなら通過
         name: '',
+        surname: '',
+        surnamefirigana: '',
         firigana: '',
         company: '',
         email: '',
@@ -196,12 +209,28 @@ export default new Vuex.Store({
             console.log("rootsetDownCount")
             state.stepCount--
         },
+        updateSurName(state, value) {
+            state.surname = value
+            if (state.surname) {
+                state.errorFlag6 = true
+            } else {
+                state.errorFlag6 = false
+            }
+        },
         updateName(state, value) {
             state.name = value
             if (state.name) {
                 state.errorFlag = true
             } else {
                 state.errorFlag = false
+            }
+        },
+        updateSurnameFirigana(state, value) {
+            state.surnamefirigana = value
+            if (state.surnamefirigana) {
+                state.errorFlag7 = true
+            } else {
+                state.errorFlag7 = false
             }
         },
         updateFirigana(state, value) {
