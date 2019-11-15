@@ -8,7 +8,7 @@ const Form = {
     namespaced: true,
     state: {
         button: ["確認", "送信", "戻る"],
-        editbutton: "編集",
+        editbutton: "修正",
         component: ["TextareaComp", "StringComp"]
     },
     mutations: {},
@@ -24,15 +24,17 @@ const Form = {
             }
             if (rootState.stepCount == 2) {
                 //お問い合わせ内容の送信
+                console.log(rootState.surname)
                 console.log(rootState.name)
-                console.log(rootState.firigana)
+                console.log(rootState.surnamefurigana)
+                console.log(rootState.furigana)
                 console.log(rootState.company)
                 console.log(rootState.email)
-                console.log(rootState.postnumber1)
-                console.log(rootState.postnumber2)
+                console.log(rootState.postnumber1, rootState.postnumber2)
                 console.log(rootState.prefectures)
                 console.log(rootState.city)
                 console.log(rootState.phone)
+                console.log(rootState.selected)
                 console.log(rootState.subject)
                 console.log(rootState.impression)
             } if (rootState.stepCount == 3) {
@@ -42,7 +44,8 @@ const Form = {
                 rootState.impression = ''
                 rootState.surname = ''
                 rootState.name = ''
-                rootState.surnamefirigana = ''
+                rootState.surnamefurigana = ''
+                rootState.furigana = ''
                 rootState.company = ''
                 rootState.email = ''
                 rootState.postnumber1 = ''
@@ -50,6 +53,7 @@ const Form = {
                 rootState.prefectures = ''
                 rootState.city = ''
                 rootState.phone = ''
+                rootState.selected = ''
                 rootState.subject = ''
                 rootState.ischecked = false
                 rootState.errorFlag = false
@@ -135,11 +139,11 @@ const String = {
         getName(state, getters, rootState) {
             return rootState.name
         },
-        getSurnameFirigana(state, getters, rootState) {
-            return rootState.surnamefirigana
+        getSurnameFurigana(state, getters, rootState) {
+            return rootState.surnamefurigana
         },
-        getFirigana(state, getters, rootState) {
-            return rootState.firigana
+        getFurigana(state, getters, rootState) {
+            return rootState.furigana
         },
         getCompany(state, getters, rootState) {
             return rootState.company
@@ -187,8 +191,8 @@ export default new Vuex.Store({
         errorFlag7: false,//trueなら通過
         name: '',
         surname: '',
-        surnamefirigana: '',
-        firigana: '',
+        surnamefurigana: '',
+        furigana: '',
         company: '',
         email: '',
         postnumber1: '',
@@ -225,17 +229,17 @@ export default new Vuex.Store({
                 state.errorFlag = false
             }
         },
-        updateSurnameFirigana(state, value) {
-            state.surnamefirigana = value
-            if (state.surnamefirigana) {
+        updateSurnameFurigana(state, value) {
+            state.surnamefurigana = value
+            if (state.surnamefurigana) {
                 state.errorFlag7 = true
             } else {
                 state.errorFlag7 = false
             }
         },
-        updateFirigana(state, value) {
-            state.firigana = value
-            if (state.firigana) {
+        updateFurigana(state, value) {
+            state.furigana = value
+            if (state.furigana) {
                 state.errorFlag2 = true
             } else {
                 state.errorFlag2 = false

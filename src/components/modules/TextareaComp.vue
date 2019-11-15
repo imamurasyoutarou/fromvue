@@ -30,33 +30,33 @@
       </div>
     </div>
 
-    <div class="firiganaArea">
+    <div class="furiganaArea">
       <div>
         <div class="margin">
           <div>
             <span class="box"></span>
             ふりがな
             <span class="required">必須</span>
-            <span class="error">{{firiganaerror}}</span>
+            <span class="error">{{furiganaerror}}</span>
           </div>
         </div>
         <div>
           <input
             type="text"
             name="kana"
-            v-model="surnamefirigana"
+            v-model="surnamefurigana"
             placeholder="せい"
             title="ふりがな"
-            @blur="surnamefiriganaBlur()"
+            @blur="surnamefuriganaBlur()"
             class="nameinput"
           />
           <input
             type="text"
             name="kana"
-            v-model="firigana"
+            v-model="furigana"
             placeholder="めい"
             title="ふりがな"
-            @blur="firiganaBlur()"
+            @blur="furiganaBlur()"
             class="nameinput"
           />
         </div>
@@ -208,7 +208,8 @@
         </div>
         <div>
           <select name="prefecture" v-model="selected">
-            <option value>Aサービスについて</option>
+            <option value>選択してください</option>
+            <option>Aサービスについて</option>
             <option>Bサービスについて</option>
             <option>Cサービスについて</option>
             <option>その他</option>
@@ -264,7 +265,7 @@
       />
       <label for="agreement">個人情報の保持の同意</label>
     </div>
-    <p class="error">{{error}}</p>
+    <h4 class="error bottom">{{error}}</h4>
   </form>
 </template>
 
@@ -276,7 +277,7 @@ export default {
   data() {
     return {
       nameerror: "",
-      firiganaerror: "",
+      furiganaerror: "",
       emailerror: "",
       subjecterror: "",
       impressionerror: ""
@@ -297,28 +298,28 @@ export default {
         this.nameerror = "";
       }
     },
-    surnamefiriganaBlur() {
+    surnamefuriganaBlur() {
       const reg = /^[ぁ-ん]+$/;
       if (
-        !reg.test(this.surnamefirigana) ||
-        (this.surnamefirigana == false && !reg.test(this.firigana)) ||
-        this.firigana == false
+        !reg.test(this.surnamefurigana) ||
+        (this.surnamefurigana == false && !reg.test(this.furigana)) ||
+        this.furigana == false
       ) {
-        this.firiganaerror = "エラー";
+        this.furiganaerror = "エラー";
       } else {
-        this.firiganaerror = "";
+        this.furiganaerror = "";
       }
     },
-    firiganaBlur() {
+    furiganaBlur() {
       const reg = /^[ぁ-ん]+$/;
       if (
-        !reg.test(this.surnamefirigana) ||
-        (this.surnamefirigana == false && !reg.test(this.firigana)) ||
-        this.firigana == false
+        !reg.test(this.surnamefurigana) ||
+        (this.surnamefurigana == false && !reg.test(this.furigana)) ||
+        this.furigana == false
       ) {
-        this.firiganaerror = "エラー";
+        this.furiganaerror = "エラー";
       } else {
-        this.firiganaerror = "";
+        this.furiganaerror = "";
       }
     },
     emailBlur() {
@@ -362,20 +363,20 @@ export default {
         this.$store.commit("updateName", value);
       }
     },
-    surnamefirigana: {
+    surnamefurigana: {
       get() {
-        return this.$store.state.surnamefirigana;
+        return this.$store.state.surnamefurigana;
       },
       set(value) {
-        this.$store.commit("updateSurnameFirigana", value);
+        this.$store.commit("updateSurnameFurigana", value);
       }
     },
-    firigana: {
+    furigana: {
       get() {
-        return this.$store.state.firigana;
+        return this.$store.state.furigana;
       },
       set(value) {
-        this.$store.commit("updateFirigana", value);
+        this.$store.commit("updateFurigana", value);
       }
     },
     company: {
@@ -475,93 +476,100 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.margin {
-  margin: 30px 0px 5px 0px;
-}
+@media screen and (min-width: 767px) {
+  /*ウィンドウ幅が767px以上の場合に適用*/
+  .margin {
+    margin: 30px 0px 5px 0px;
+  }
 
-.nameArea,
-.firiganaArea,
-.companyArea,
-.mailArea,
-.postnumberArea,
-.prefecturesArea,
-.addressArea,
-.phoneArea,
-.selectedArea,
-.subjectArea,
-.impressionArea {
-  display: flex;
-  justify-content: center;
-}
-.ischeckedArea {
-  text-align: center;
-  margin: 30px;
-}
-.required {
-  padding: 3px;
-  background-color: red;
-  color: white;
-  font-size: 1px;
-}
-.any {
-  padding: 2.5px;
-  border: 0.5px solid;
-  color: black;
-  font-size: 1px;
-}
-.box {
-  padding: 2px;
-  margin-right: 3px;
-  background: #000;
-}
-.error {
-  color: red;
-  text-align: center;
-}
-.nameinput {
-  padding: 10px;
-  width: 300px;
-}
-.nameinput {
-  padding: 10px;
-  width: 300px;
-  background: #f5f5f5;
-  border: none;
-}
-.postnumber1input {
-  padding: 10px;
-  width: 230px;
-  background: #f5f5f5;
-  border: none;
-}
-.postnumber2input {
-  padding: 10px;
-  width: 350px;
-  background: #f5f5f5;
-  border: none;
-}
+  .nameArea,
+  .furiganaArea,
+  .companyArea,
+  .mailArea,
+  .postnumberArea,
+  .prefecturesArea,
+  .addressArea,
+  .phoneArea,
+  .selectedArea,
+  .subjectArea,
+  .impressionArea {
+    display: flex;
+    justify-content: center;
+  }
+  .ischeckedArea {
+    text-align: center;
+    margin: 30px;
+  }
+  .required {
+    padding: 3px;
+    background-color: red;
+    color: white;
+    font-size: 1px;
+  }
+  .any {
+    padding: 2.5px;
+    border: 0.5px solid;
+    color: black;
+    font-size: 1px;
+  }
+  .box {
+    padding: 2px;
+    margin-right: 3px;
+    background: #000;
+  }
+  .error {
+    color: red;
+    text-align: center;
+    align-items: center;
+  }
+  .nameinput {
+    padding: 10px;
+    width: 300px;
+  }
+  .nameinput {
+    padding: 10px;
+    width: 300px;
+    background: #f5f5f5;
+    border: none;
+  }
+  .postnumber1input {
+    padding: 10px;
+    width: 230px;
+    background: #f5f5f5;
+    border: none;
+  }
+  .postnumber2input {
+    padding: 10px;
+    width: 350px;
+    background: #f5f5f5;
+    border: none;
+  }
 
-.inputStyle {
-  padding: 10px;
-  width: 628px;
-  font-size: 15px;
-  background: #f5f5f5;
-  border: none;
-}
-textarea {
-  width: 645px;
-  font-size: 100%;
-  height: 250px;
-  background: #f5f5f5;
-  border: none;
-}
-select {
-  padding: 10px;
-  width: 650px;
-  font-size: 15px;
-  background: none transparent;
-  -webkit-appearance: button;
-  background: #f5f5f5;
-  border: none;
+  .inputStyle {
+    padding: 10px;
+    width: 628px;
+    font-size: 15px;
+    background: #f5f5f5;
+    border: none;
+  }
+  textarea {
+    width: 645px;
+    font-size: 100%;
+    height: 250px;
+    background: #f5f5f5;
+    border: none;
+  }
+  select {
+    padding: 10px;
+    width: 650px;
+    font-size: 15px;
+    background: none transparent;
+    -webkit-appearance: button;
+    background: #f5f5f5;
+    border: none;
+  }
+  .bottom {
+    margin: 70px;
+  }
 }
 </style>

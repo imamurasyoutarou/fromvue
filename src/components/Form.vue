@@ -5,12 +5,22 @@
     </div>
     <div class="textarea">
       <component :is="isComponent"></component>
-      <div class="center">
-        <button v-on:click="buttonAction">{{button}}</button>
+      <div class="thanktext" v-if="count==2">
+        <h3>お問い合わせいただき、誠にありがとうございました</h3>
+        <h3>お問い合わせの内容は無事送信されました</h3>
+        <h3>担当者がご確認の上、連絡差し上げます。ご連絡まで今しばらくおまちください</h3>
       </div>
-    </div>
-    <div v-if="count==1">
-      <button v-on:click="editbuttonAction">{{editbutton}}</button>
+      <div class="flex">
+        <div class="center">
+          <button class="mainbutton" v-on:click="buttonAction">{{button}}</button>
+        </div>
+        <div v-if="count==1">
+          <button
+            class="editbutton"
+            v-on:click="editbuttonAction"
+          >{{editbutton}}</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,29 +52,50 @@ export default {
 </script>
 
 <style scoped>
-.textarea {
-  margin-top: 50px;
-}
-.header {
-  background: Orange;
-  padding: 20px;
-  color: white;
-  text-align: center;
-  border-bottom: 1px solid;
-  border-color: black;
-}
-button {
-  padding: 10px;
-  font-weight: bold;
-  background: Orange;
-  color: white;
-  border: #e1e1e1;
-  font-size: 15px;
-  width: 300px;
-  text-align: center;
-  margin: 70px;
-}
-.center {
-  text-align: center;
+@media screen and (min-width: 767px) {
+  /*ウィンドウ幅が767px以上の場合に適用*/
+  .textarea {
+    margin-top: 50px;
+  }
+  .header {
+    background: Orange;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid;
+    border-color: black;
+  }
+  .mainbutton {
+    padding: 10px;
+    font-weight: bold;
+    background: Orange;
+    color: white;
+    border: #e1e1e1;
+    font-size: 15px;
+    width: 300px;
+    text-align: center;
+  }
+  .center {
+    text-align: center;
+  }
+  .flex {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
+  }
+  .editbutton {
+    padding: 10px;
+    margin-left: 12px;
+    background: #c5c0c0;
+    font-weight: bold;
+    border: #e1e1e1;
+    font-size: 15px;
+    width: 300px;
+    text-align: center;
+  }
+  .thanktext {
+    text-align: center;
+    margin: 80px;
+  }
 }
 </style>
