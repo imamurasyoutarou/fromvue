@@ -476,6 +476,87 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@media screen and (max-width: 479px) {
+  form {
+    margin-left: 35px;
+  }
+
+  .margin {
+    margin: 30px 0px 5px 0px;
+  }
+  .box {
+    padding: 2px;
+    margin-right: 3px;
+    background: #000;
+  }
+  .required {
+    padding: 3px;
+    background-color: red;
+    color: white;
+    font-size: 1px;
+  }
+  .any {
+    padding: 2.5px;
+    border: 0.5px solid;
+    color: black;
+    font-size: 1px;
+  }
+  .nameinput {
+    padding: 10px;
+    width: 130px;
+    font-size: 15px;
+    background: #f5f5f5;
+    border: none;
+  }
+  .postnumber1input {
+    padding: 10px;
+    width: 80px;
+    font-size: 15px;
+    background: #f5f5f5;
+    border: none;
+  }
+  .postnumber2input {
+    padding: 10px;
+    width: 158px;
+    font-size: 15px;
+    background: #f5f5f5;
+    border: none;
+  }
+
+  .inputStyle {
+    padding: 10px;
+    width: 282px;
+    font-size: 15px;
+    background: #f5f5f5;
+    border: none;
+  }
+  textarea {
+    width: 296px;
+    font-size: 100%;
+    height: 250px;
+    font-size: 15px;
+    background: #f5f5f5;
+    border: none;
+  }
+  select {
+    padding: 10px;
+    width: 300px;
+    font-size: 15px;
+    background: none transparent;
+    -webkit-appearance: button;
+    background: #f5f5f5;
+    border: none;
+  }
+  .error {
+    color: red;
+    text-align: center;
+    align-items: center;
+  }
+  .ischeckedArea {
+    margin: 30px 0px;
+  }
+}
+
 @media screen and (min-width: 767px) {
   /*ウィンドウ幅が767px以上の場合に適用*/
   .margin {
@@ -522,24 +603,24 @@ export default {
     text-align: center;
     align-items: center;
   }
+
   .nameinput {
     padding: 10px;
     width: 300px;
-  }
-  .nameinput {
-    padding: 10px;
-    width: 300px;
+    font-size: 15px;
     background: #f5f5f5;
     border: none;
   }
   .postnumber1input {
     padding: 10px;
+    font-size: 15px;
     width: 230px;
     background: #f5f5f5;
     border: none;
   }
   .postnumber2input {
     padding: 10px;
+    font-size: 15px;
     width: 350px;
     background: #f5f5f5;
     border: none;
@@ -554,6 +635,7 @@ export default {
   }
   textarea {
     width: 645px;
+    font-size: 15px;
     font-size: 100%;
     height: 250px;
     background: #f5f5f5;
