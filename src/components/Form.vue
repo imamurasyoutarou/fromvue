@@ -1,5 +1,9 @@
 <template>
   <div class="body">
+    <div class="logoArea">
+      <img src="../assets/ロゴ.png" alt />
+    </div>
+
     <div class="header">
       <HeadComp></HeadComp>
     </div>
@@ -77,6 +81,14 @@ export default {
 <style scoped>
 @media screen and (max-width: 479px) {
   /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  .logoArea {
+    text-align: center;
+  }
+
+  img {
+    width: 300px;
+  }
+
   .explanation {
     margin: 40px;
   }
@@ -93,17 +105,15 @@ export default {
     font-size: 15px;
   }
   .header {
-    background: Orange;
-    padding: 20px;
-    color: white;
+    font-size: 14px;
     text-align: center;
     border-bottom: 1px solid;
-    border-color: black;
+    margin: 50px 40px;
   }
   .mainbutton {
     padding: 10px;
     font-weight: bold;
-    background: Orange;
+    background: black;
     color: white;
     border: #e1e1e1;
     font-size: 15px;
@@ -136,6 +146,13 @@ export default {
 }
 
 @media screen and (min-width: 767px) {
+  .logoArea {
+    text-align: center;
+  }
+
+  img {
+    width: 320px;
+  }
   /*ウィンドウ幅が767px以上の場合に適用*/
   .access {
     padding: 10px;
@@ -147,17 +164,15 @@ export default {
     margin-top: 50px;
   }
   .header {
-    background: Orange;
-    padding: 20px;
-    color: white;
+    font-size: 20px;
     text-align: center;
     border-bottom: 1px solid;
-    border-color: black;
+    margin: 50px 330px;
   }
   .mainbutton {
     padding: 10px;
     font-weight: bold;
-    background: Orange;
+    background: black;
     color: white;
     border: #e1e1e1;
     font-size: 15px;
