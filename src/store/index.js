@@ -2,6 +2,18 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router'
 
+import firebaseConfig from '../../firebase/firebase'
+
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+
+firebase.initializeApp(firebaseConfig)
+
+
+var db = firebase.firestore();
+
+
+
 Vue.use(Vuex)
 
 const Form = {
@@ -23,11 +35,22 @@ const Form = {
                 commit('setStepCount', null, { root: true })//rootへのアクセス
             }
             if (rootState.stepCount == 2) {
+
+                db.collection("test1")
+                    .add({
+                        surname: rootState.surname + rootState.name,
+                        surnamefurigana: rootState.surnamefurigana + rootState.furigana,
+                        company: rootState.company,
+                        email: rootState.email,
+                        postnumber: rootState.postnumber1 + rootState.postnumber2,
+                        prefectures: rootState.prefectures,
+                        city: rootState.city,
+                        selected: rootState.selected,
+                        impression: rootState.impression,
+                    })
                 //お問い合わせ内容の送信
-                console.log(rootState.surname)
-                console.log(rootState.name)
-                console.log(rootState.surnamefurigana)
-                console.log(rootState.furigana)
+                console.log(rootState.surname + rootState.name)
+                console.log(rootState.surnamefurigana + rootState.furigana)
                 console.log(rootState.company)
                 console.log(rootState.email)
                 console.log(rootState.postnumber1, rootState.postnumber2)

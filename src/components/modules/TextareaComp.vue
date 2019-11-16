@@ -216,7 +216,7 @@
             type="tel"
             name="tel"
             v-model="phone"
-            placeholder="090-1234-5678"
+            placeholder="080-1234-5678"
             title="電話番号"
             class="inputStyle"
           />
@@ -529,6 +529,10 @@ export default {
     color: grey;
     font-size: 10px;
   }
+  .namemargin,
+  .selectedmargin {
+    margin: 0px 0px 5px 0px;
+  }
   .margin {
     margin: 30px 0px 5px 0px;
   }
@@ -613,6 +617,10 @@ export default {
 @media screen and (min-width: 767px) {
   /*ウィンドウ幅が767px以上の場合に適用*/
 
+  .namemargin,
+  .selectedmargin {
+    margin: 0px 0px 5px 0px;
+  }
   .margin {
     margin: 30px 0px 5px 0px;
   }
@@ -664,7 +672,7 @@ export default {
     color: red;
     text-align: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .nameinput {
