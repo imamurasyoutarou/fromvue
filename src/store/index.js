@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const Form = {
     namespaced: true,
     state: {
-        button: ["確認", "送信", "戻る"],
+        button: ["入力内容の確認", "送信", "戻る"],
         editbutton: "修正",
         component: ["TextareaComp", "StringComp"]
     },
@@ -48,6 +48,7 @@ const Form = {
                 rootState.furigana = ''
                 rootState.company = ''
                 rootState.email = ''
+                rootState.checkemail = ''
                 rootState.postnumber1 = ''
                 rootState.postnumber2 = ''
                 rootState.prefectures = ''
@@ -61,6 +62,9 @@ const Form = {
                 rootState.errorFlag3 = false
                 rootState.errorFlag4 = false
                 rootState.errorFlag5 = false
+                rootState.errorFlag6 = false
+                rootState.errorFlag7 = false
+                rootState.errorFlag8 = false
                 rootState.ischecked = false
             }
         }, editbuttonAction({ commit, state, rootState }) {
@@ -118,6 +122,7 @@ const Textarea = {
                 rootState.errorFlag5 &&
                 rootState.errorFlag6 &&
                 rootState.errorFlag7 &&
+                rootState.errorFlag8 &&
                 rootState.ischecked) {
                 return null
             } else {
@@ -189,12 +194,14 @@ export default new Vuex.Store({
         errorFlag5: false,//trueなら通過
         errorFlag6: false,//trueなら通過
         errorFlag7: false,//trueなら通過
+        errorFlag8: false,//trueなら通過
         name: '',
         surname: '',
         surnamefurigana: '',
         furigana: '',
         company: '',
         email: '',
+        checkemail: '',
         postnumber1: '',
         postnumber2: '',
         prefectures: '',
@@ -254,6 +261,14 @@ export default new Vuex.Store({
                 state.errorFlag3 = true
             } else {
                 state.errorFlag3 = false
+            }
+        },
+        updateCheckemail(state, value) {
+            state.checkemail = value
+            if (state.checkemail) {
+                state.errorFlag8 = true
+            } else {
+                state.errorFlag8 = false
             }
         },
         updatePostnumber1(state, value) {

@@ -1,8 +1,9 @@
 <template>
   <form>
+    <h2 class="customertext">お客様情報</h2>
     <div class="nameArea">
       <div>
-        <div class="margin">
+        <div class="namemargin">
           <div>
             <span class="box"></span>
             名前
@@ -90,12 +91,35 @@
         </div>
         <div>
           <input
-            type="text"
+            type="email"
             name="email"
             v-model="email"
             placeholder="localname@domain.com"
             title="メールアドレス"
             @blur="emailBlur()"
+            class="inputStyle"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="mailArea">
+      <div>
+        <div class="margin">
+          <div>
+            <span class="box"></span>
+            メールアドレス確認用
+            <span class="required">必須</span>
+            <span class="error">{{checkemailerror}}</span>
+          </div>
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            v-model="checkemail"
+            title="メールアドレス"
+            @blur="checkemailBlur()"
             class="inputStyle"
           />
         </div>
@@ -109,25 +133,28 @@
             <span class="box"></span>
             郵便番号
             <span class="any">任意</span>
+            <span class="note">※入力しますと都道府県・住所が自動入力されます</span>
           </div>
         </div>
         <div>
           <input
-            type="text"
+            type="number"
             name="zip31"
             size="4"
             maxlength="3"
             v-model="postnumber1"
             class="postnumber1input"
+            placeholder="000"
           /> －
           <input
-            type="text"
+            type="number"
             name="zip32"
             size="5"
             maxlength="4"
             onKeyUp="AjaxZip3.zip2addr('zip31','zip32','pref31','addr31','addr31');"
             v-model="postnumber2"
             class="postnumber2input"
+            placeholder="0000"
           />
         </div>
       </div>
@@ -186,7 +213,7 @@
         </div>
         <div>
           <input
-            type="text"
+            type="tel"
             name="tel"
             v-model="phone"
             placeholder="090-1234-5678"
@@ -196,10 +223,10 @@
         </div>
       </div>
     </div>
-
+    <h2 class="customertext">お問い合わせ内容</h2>
     <div class="selectedArea">
       <div>
-        <div class="margin">
+        <div class="selectedmargin">
           <div>
             <span class="box"></span>
             どの製品について
@@ -256,6 +283,11 @@
     </div>
 
     <div class="ischeckedArea">
+      <div class="textcenter">
+        <div>当社プライバシーポリシーに</div>
+        <div>同意頂ける場合は「同意する」に</div>
+        <div>チェックを付けてください</div>
+      </div>
       <input
         type="checkbox"
         name="agreement"
@@ -263,7 +295,7 @@
         v-model="ischecked"
         class="checkbox"
       />
-      <label for="agreement">個人情報の保持の同意</label>
+      <label for="agreement">同意する</label>
     </div>
     <h4 class="error bottom">{{error}}</h4>
   </form>
@@ -279,6 +311,7 @@ export default {
       nameerror: "",
       furiganaerror: "",
       emailerror: "",
+      checkemailerror: "",
       subjecterror: "",
       impressionerror: ""
     };
@@ -286,38 +319,30 @@ export default {
   methods: {
     surnameBlur() {
       if (this.surname == false && this.name == false) {
-        this.nameerror = "エラー";
+        this.nameerror = "未入力なってます";
       } else {
         this.nameerror = "";
       }
     },
     nameBlur() {
       if (this.surname == false && this.name == false) {
-        this.nameerror = "エラー";
+        this.nameerror = "未入力なってます";
       } else {
         this.nameerror = "";
       }
     },
     surnamefuriganaBlur() {
-      const reg = /^[ぁ-ん]+$/;
-      if (
-        !reg.test(this.surnamefurigana) ||
-        (this.surnamefurigana == false && !reg.test(this.furigana)) ||
-        this.furigana == false
-      ) {
-        this.furiganaerror = "エラー";
+      const reg = /^[あ-ん゛゜ぁ-ぉゃ-ょー「」、]+/;
+      if (!reg.test(this.surnamefurigana)) {
+        return (this.furiganaerror = "全角ひらかな以外が入力されています");
       } else {
-        this.furiganaerror = "";
+        return (this.furiganaerror = "");
       }
     },
     furiganaBlur() {
-      const reg = /^[ぁ-ん]+$/;
-      if (
-        !reg.test(this.surnamefurigana) ||
-        (this.surnamefurigana == false && !reg.test(this.furigana)) ||
-        this.furigana == false
-      ) {
-        this.furiganaerror = "エラー";
+      const reg = /^[あ-ん゛゜ぁ-ぉゃ-ょー「」、]+/;
+      if (!reg.test(this.furigana)) {
+        this.furiganaerror = "全角ひらかな以外が入力されています";
       } else {
         this.furiganaerror = "";
       }
@@ -325,21 +350,29 @@ export default {
     emailBlur() {
       const reg = /^\S+@\S+\.\S+$/;
       if (!reg.test(this.email) || this.email == false) {
-        this.emailerror = "エラー";
+        this.emailerror = "「メールアドレス」は正しい書式で記入してください。";
       } else {
         this.emailerror = "";
       }
     },
+    checkemailBlur() {
+      if (this.email !== this.checkemail) {
+        this.checkemailerror =
+          "「メールアドレス」と確認用メールアドレスが一致しません。";
+      } else {
+        this.checkemailerror = "";
+      }
+    },
     subjectBlur() {
       if (this.subject == false) {
-        this.subjecterror = "エラー";
+        this.subjecterror = "未入力なってます";
       } else {
         this.subjecterror = "";
       }
     },
     impressionBlur() {
       if (this.impression == false) {
-        this.impressionerror = "エラー";
+        this.impressionerror = "未入力なってます";
       } else {
         this.impressionerror = "";
       }
@@ -393,6 +426,14 @@ export default {
       },
       set(value) {
         this.$store.commit("updateEmail", value);
+      }
+    },
+    checkemail: {
+      get() {
+        return this.$store.state.checkemail;
+      },
+      set(value) {
+        this.$store.commit("updateCheckemail", value);
       }
     },
     postnumber1: {
@@ -478,9 +519,16 @@ export default {
 <style scoped>
 @media screen and (max-width: 479px) {
   form {
-    margin-left: 35px;
+    margin: 35px;
   }
-
+  .customertext {
+    text-align: center;
+    margin-top: 50px;
+  }
+  .note {
+    color: grey;
+    font-size: 10px;
+  }
   .margin {
     margin: 30px 0px 5px 0px;
   }
@@ -551,18 +599,32 @@ export default {
     color: red;
     text-align: center;
     align-items: center;
+    font-size: 13px;
   }
   .ischeckedArea {
-    margin: 30px 0px;
+    margin: 30px;
+    text-align: center;
+  }
+  .checkbox {
+    margin: 20px 0px;
   }
 }
 
 @media screen and (min-width: 767px) {
   /*ウィンドウ幅が767px以上の場合に適用*/
+
   .margin {
     margin: 30px 0px 5px 0px;
   }
+  .customertext {
+    text-align: center;
+    margin-top: 50px;
+  }
 
+  .note {
+    color: grey;
+    font-size: 12px;
+  }
   .nameArea,
   .furiganaArea,
   .companyArea,
@@ -602,6 +664,7 @@ export default {
     color: red;
     text-align: center;
     align-items: center;
+    font-size: 10px;
   }
 
   .nameinput {
@@ -651,7 +714,11 @@ export default {
     border: none;
   }
   .bottom {
-    margin: 70px;
+    margin: 40px;
+    font-size: 18px;
+  }
+  .checkbox {
+    margin: 20px 0px;
   }
 }
 </style>
