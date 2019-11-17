@@ -8,7 +8,7 @@
             <span class="box"></span>
             名前
             <span class="required">必須</span>
-            <span class="error">{{nameerror}}</span>
+            <p class="error">{{nameerror}}</p>
           </div>
         </div>
 
@@ -38,7 +38,7 @@
             <span class="box"></span>
             ふりがな
             <span class="required">必須</span>
-            <span class="error">{{furiganaerror}}</span>
+            <p class="error">{{furiganaerror}}</p>
           </div>
         </div>
         <div>
@@ -86,7 +86,7 @@
             <span class="box"></span>
             メールアドレス
             <span class="required">必須</span>
-            <span class="error">{{emailerror}}</span>
+            <p class="error emailerror">{{emailerror}}</p>
           </div>
         </div>
         <div>
@@ -110,7 +110,7 @@
             <span class="box"></span>
             メールアドレス確認用
             <span class="required">必須</span>
-            <span class="error">{{checkemailerror}}</span>
+            <p class="error checkemailerror">{{checkemailerror}}</p>
           </div>
         </div>
         <div>
@@ -133,7 +133,7 @@
             <span class="box"></span>
             郵便番号
             <span class="any">任意</span>
-            <span class="note">※入力しますと都道府県・住所が自動入力されます</span>
+            <p class="note">※入力しますと都道府県・住所が自動入力されます</p>
           </div>
         </div>
         <div>
@@ -253,7 +253,7 @@
             <span class="box"></span>
             お問い合わせ件名
             <span class="required">必須</span>
-            <span class="error">{{subjecterror}}</span>
+            <p class="error">{{subjecterror}}</p>
           </div>
         </div>
         <div>
@@ -274,7 +274,7 @@
             <span class="box"></span>
             お問い合わせ内容
             <span class="required">必須</span>
-            <span class="error">{{impressionerror}}</span>
+            <p class="error">{{impressionerror}}</p>
           </div>
         </div>
         <div>
@@ -298,7 +298,7 @@
       />
       <label for="agreement">同意する</label>
     </div>
-    <h4 class="error bottom">{{error}}</h4>
+    <h4 class="errortext bottom">{{error}}</h4>
   </form>
 </template>
 
@@ -522,6 +522,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.errortext {
+  text-align: center;
+  color: red;
+}
 .customertext {
   text-align: center;
   margin-bottom: 30px;
@@ -593,9 +597,13 @@ select {
 }
 .error {
   color: red;
-  text-align: center;
-  align-items: center;
   font-size: 13px;
+}
+.emailerror {
+  font-size: 12px;
+}
+.checkemailerror {
+  font-size: 11px;
 }
 .ischeckedArea {
   margin: 30px;
@@ -696,6 +704,11 @@ select {
   .bottom {
     margin: 40px;
     font-size: 18px;
+  }
+  .error {
+    color: red;
+
+    font-size: 13px;
   }
 }
 </style>
