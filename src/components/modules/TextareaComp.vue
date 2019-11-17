@@ -524,12 +524,13 @@ export default {
 <style scoped>
 .customertext {
   text-align: center;
+  margin-bottom: 30px;
 }
 .note {
   color: grey;
 }
 .margin {
-  margin: 30px 0px 5px 0px;
+  margin: 30px 0px 10px 0px;
 }
 
 .box {
@@ -604,12 +605,48 @@ select {
   margin: 20px 0px;
 }
 
+form {
+  margin: 35px;
+}
+.customertext {
+  margin-top: 50px;
+}
+
+.note {
+  font-size: 10px;
+}
+.namemargin,
+.selectedmargin {
+  margin: 0px 0px 10px 0px;
+}
+
+.nameinput {
+  width: 130px;
+}
+.postnumber1input {
+  width: 80px;
+}
+.postnumber2input {
+  width: 158px;
+}
+
+.inputStyle {
+  width: 282px;
+}
+textarea {
+  width: 296px;
+  height: 250px;
+}
+select {
+  width: 300px;
+}
+
 @media screen and (min-width: 767px) {
   /*ウィンドウ幅が767px以上の場合に適用*/
 
   .namemargin,
   .selectedmargin {
-    margin: 0px 0px 5px 0px;
+    margin: 30px 0px 10px 0px;
   }
 
   .customertext {
@@ -659,43 +696,6 @@ select {
   .bottom {
     margin: 40px;
     font-size: 18px;
-  }
-}
-@media screen and (max-width: 479px) {
-  form {
-    margin: 35px;
-  }
-  .customertext {
-    margin-top: 50px;
-  }
-
-  .note {
-    font-size: 10px;
-  }
-  .namemargin,
-  .selectedmargin {
-    margin: 0px 0px 5px 0px;
-  }
-
-  .nameinput {
-    width: 130px;
-  }
-  .postnumber1input {
-    width: 80px;
-  }
-  .postnumber2input {
-    width: 158px;
-  }
-
-  .inputStyle {
-    width: 282px;
-  }
-  textarea {
-    width: 296px;
-    height: 250px;
-  }
-  select {
-    width: 300px;
   }
 }
 </style>

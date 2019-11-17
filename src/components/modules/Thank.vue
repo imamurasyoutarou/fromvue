@@ -19,12 +19,10 @@
 
 
 <style scoped>
-@media screen and (max-width: 479px) {
-  .thanktext {
-    text-align: center;
-    margin: 52px;
-    font-size: 15px;
-  }
+.thanktext {
+  text-align: center;
+  margin: 52px;
+  font-size: 15px;
 }
 
 @media screen and (min-width: 767px) {

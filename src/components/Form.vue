@@ -96,26 +96,26 @@ export default {
   text-align: center;
 }
 /*ウィンドウ幅が最大479pxまでの場合に適用*/
-@media screen and (max-width: 479px) {
-  img {
-    width: 300px;
-  }
-  .explanation {
-    margin: 40px;
-  }
-  .header {
-    font-size: 14px;
-    margin: 50px 40px;
-  }
-  .mainbutton {
-    margin-bottom: 50px;
-    width: 282px;
-  }
-  .editbutton {
-    width: 282px;
-    margin-top: 10px;
-  }
+
+img {
+  width: 300px;
 }
+.explanation {
+  margin: 40px;
+}
+.header {
+  font-size: 14px;
+  margin: 50px 40px;
+}
+.mainbutton {
+  margin-bottom: 50px;
+  width: 282px;
+}
+.editbutton {
+  width: 282px;
+  margin-top: 10px;
+}
+
 /*ウィンドウ幅が767px以上の場合に適用*/
 @media screen and (min-width: 767px) {
   img {
