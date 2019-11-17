@@ -1,15 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router'
-
 import firebaseConfig from '../../firebase/firebase'
-
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
 firebase.initializeApp(firebaseConfig)
-
-
 var db = firebase.firestore();
 
 
@@ -26,6 +22,9 @@ const Form = {
     mutations: {},
     actions: {
         buttonAction({ commit, state, rootState }) {
+
+            window.scrollY = 0
+
             console.log("buttonAction")
             if (rootState.errorFlag &&
                 rootState.errorFlag2 &&
@@ -95,7 +94,6 @@ const Form = {
                 commit('setDownCount', null, { root: true })
             }
         }
-
     },
     //ボタンの繊維
     getters: {
@@ -115,6 +113,7 @@ const Form = {
             return rootState.stepCount
         }
     }
+
 }
 
 //ヘッダーの繊維

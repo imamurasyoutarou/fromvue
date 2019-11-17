@@ -4,7 +4,7 @@
       <img src="../assets/ロゴ.png" alt />
     </div>
 
-    <div class="header">
+    <div class="header" id="toTop">
       <HeadComp></HeadComp>
     </div>
     <div class="textarea">
@@ -39,7 +39,11 @@
       </div>
       <div class="flex">
         <div class="center">
-          <button class="mainbutton" v-on:click="buttonAction">{{button}}</button>
+          <button
+            class="mainbutton"
+            v-on:click="buttonAction"
+            v-scroll-to="'#toTop'"
+          >{{button}}</button>
         </div>
         <div v-if="count==1" class="center2">
           <button

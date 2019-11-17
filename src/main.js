@@ -7,7 +7,7 @@ import store from './store'
 
 
 
-
+Vue.use(VueScrollTo)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
