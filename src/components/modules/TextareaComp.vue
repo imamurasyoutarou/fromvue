@@ -546,13 +546,13 @@ export default {
   padding: 3px;
   background-color: red;
   color: white;
-  font-size: 1px;
+  font-size: 4px;
 }
 .any {
   padding: 2.5px;
   border: 0.5px solid;
   color: black;
-  font-size: 1px;
+  font-size: 4px;
 }
 
 .nameinput {
