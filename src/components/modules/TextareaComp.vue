@@ -138,7 +138,7 @@
         </div>
         <div>
           <input
-            type="number"
+            type="text"
             name="zip31"
             size="4"
             maxlength="3"
@@ -147,7 +147,7 @@
             placeholder="000"
           /> －
           <input
-            type="number"
+            type="text"
             name="zip32"
             size="5"
             maxlength="4"
@@ -322,14 +322,14 @@ export default {
   methods: {
     surnameBlur() {
       if (this.surname == false && this.name == false) {
-        this.nameerror = "未入力なってます";
+        this.nameerror = "未入力になってます";
       } else {
         this.nameerror = "";
       }
     },
     nameBlur() {
       if (this.surname == false && this.name == false) {
-        this.nameerror = "未入力なってます";
+        this.nameerror = "未入力になってます";
       } else {
         this.nameerror = "";
       }
@@ -337,7 +337,7 @@ export default {
     surnamefuriganaBlur() {
       const reg = /^[あ-ん゛゜ぁ-ぉゃ-ょー「」、]+/;
       if (!reg.test(this.surnamefurigana)) {
-        return (this.furiganaerror = "全角ひらかな以外が入力されています");
+        return (this.furiganaerror = "全角ひらがな以外が入力されています");
       } else {
         return (this.furiganaerror = "");
       }
@@ -345,7 +345,7 @@ export default {
     furiganaBlur() {
       const reg = /^[あ-ん゛゜ぁ-ぉゃ-ょー「」、]+/;
       if (!reg.test(this.furigana)) {
-        this.furiganaerror = "全角ひらかな以外が入力されています";
+        this.furiganaerror = "全角ひらがな以外が入力されています";
       } else {
         this.furiganaerror = "";
       }
@@ -368,14 +368,14 @@ export default {
     },
     subjectBlur() {
       if (this.subject == false) {
-        this.subjecterror = "未入力なってます";
+        this.subjecterror = "未入力になってます";
       } else {
         this.subjecterror = "";
       }
     },
     impressionBlur() {
       if (this.impression == false) {
-        this.impressionerror = "未入力なってます";
+        this.impressionerror = "未入力になってます";
       } else {
         this.impressionerror = "";
       }

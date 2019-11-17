@@ -68,6 +68,8 @@ export default {
 .header {
   text-align: center;
   border-bottom: 1px solid;
+  font-size: 14px;
+  margin: 50px 100px;
 }
 .mainbutton {
   padding: 10px;
@@ -95,7 +97,6 @@ export default {
 .center2 {
   text-align: center;
 }
-/*ウィンドウ幅が最大479pxまでの場合に適用*/
 
 img {
   width: 300px;
@@ -103,17 +104,13 @@ img {
 .explanation {
   margin: 40px;
 }
-.header {
-  font-size: 14px;
-  margin: 50px 40px;
-}
+
 .mainbutton {
   margin-bottom: 50px;
   width: 282px;
 }
 .editbutton {
   width: 282px;
-  margin-top: 10px;
 }
 
 /*ウィンドウ幅が767px以上の場合に適用*/
@@ -131,7 +128,7 @@ img {
   }
   .header {
     font-size: 20px;
-    margin: 50px 330px;
+    margin: 50px 350px;
   }
   .mainbutton {
     width: 300px;
