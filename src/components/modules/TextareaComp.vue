@@ -543,16 +543,16 @@ export default {
   background: #000;
 }
 .required {
-  padding: 3px;
+  padding: 4px;
   background-color: red;
   color: white;
-  font-size: 4px;
+  font-size: 10px;
 }
 .any {
-  padding: 2.5px;
+  padding: 3.5px;
   border: 0.5px solid;
   color: black;
-  font-size: 4px;
+  font-size: 10px;
 }
 
 .nameinput {
