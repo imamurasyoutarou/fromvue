@@ -7,25 +7,25 @@ import 'firebase/firestore';
 
 firebase.initializeApp(firebaseConfig)
 var db = firebase.firestore();
-
-
-
 Vue.use(Vuex)
+
+
 
 const Form = {
     namespaced: true,
+    //メイン、編集ボタンの文章,入力画面、確認画面ののState
     state: {
         button: ["入力内容の確認", "送信", "戻る"],
         editbutton: "修正",
         component: ["TextareaComp", "StringComp"]
     },
     mutations: {},
+    //ボタンアクション stepCount （ボタンの押したカウント）ごとに処理を変更
     actions: {
         buttonAction({ commit, state, rootState }) {
 
-            window.scrollY = 0
 
-            console.log("buttonAction")
+            //必須項目が全て入力されていたらsetStepCountの処理を走らせる
             if (rootState.errorFlag &&
                 rootState.errorFlag2 &&
                 rootState.errorFlag3 &&
@@ -34,7 +34,7 @@ const Form = {
                 commit('setStepCount', null, { root: true })//rootへのアクセス
             }
             if (rootState.stepCount == 2) {
-
+                //送信ボタンを押すとfirestoreにお問い合わせ内容を送信する
                 db.collection("test1")
                     .add({
                         surname: rootState.surname + rootState.name,
@@ -60,7 +60,7 @@ const Form = {
                 console.log(rootState.subject)
                 console.log(rootState.impression)
             } if (rootState.stepCount == 3) {
-                //ページのリセット
+                //ページ,stateのリセット
                 router.push('/')
                 rootState.stepCount = 0
                 rootState.impression = ''
@@ -91,6 +91,7 @@ const Form = {
             }
         }, editbuttonAction({ commit, state, rootState }) {
             if (rootState.stepCount == 1) {
+                //stepCountを一つ減らすことで編集が可能に
                 commit('setDownCount', null, { root: true })
             }
         }
@@ -132,11 +133,14 @@ const Head = {
 
 const Textarea = {
     namespaced: true,
+    //必須項目を埋めていないと出るエラー文
     state: {
         errorMsg: "必須項目の入力漏れがあります",
     },
+
     getters: {
         getError(state, getters, rootState) {
+            //必須項目を全て入れたらエラー分を削除
             if (rootState.errorFlag &&
                 rootState.errorFlag2 &&
                 rootState.errorFlag3 &&
@@ -155,7 +159,10 @@ const Textarea = {
 }
 
 const String = {
-    namespaced: true,//名前空間を有効にする
+    namespaced: true,
+
+    //入力した値をStringCompに送る
+
     getters: {
         getString(state, getters, rootState) {
             return rootState.impression
@@ -208,7 +215,6 @@ export default new Vuex.Store({
     state: {
         editbutton: null,
         stepCount: 0,
-        impression: "",
         errorFlag: false,//trueなら通過
         errorFlag2: false,//trueなら通過
         errorFlag3: false,//trueなら通過
@@ -231,17 +237,23 @@ export default new Vuex.Store({
         phone: '',
         selected: '',
         subject: '',
+        impression: "",
         ischecked: false
     },
     mutations: {
+        //stepCountをカウントをたす
         setStepCount(state) {
             console.log("rootsetStepCount")
             state.stepCount++
         },
+        //stepCountをカウントをひく
         setDownCount(state) {
             console.log("rootsetDownCount")
             state.stepCount--
         },
+
+
+        //TextareaCompから値を受け取ってStateを更新する
         updateSurName(state, value) {
             state.surname = value
             if (state.surname) {

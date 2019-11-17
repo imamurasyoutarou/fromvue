@@ -106,6 +106,7 @@
 import { mapGetters } from "vuex";
 export default {
   name: "stringComp",
+  //storeから値を受け取る
   computed: mapGetters("String", {
     string: "getString",
     surname: "getSurName",
@@ -128,90 +129,51 @@ export default {
 
 
 <style scoped>
+.textcenter {
+  text-align: center;
+}
+.error {
+  color: red;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+}
+.item {
+  width: 160px;
+  border: 0.1px solid;
+  padding: 10px;
+  background: #f5f5f5;
+}
+.item2 {
+  width: 410px;
+  padding: 10px;
+  border: 0.1px solid;
+  font-weight: bold;
+}
+.stringitem {
+  width: 160px;
+  padding: 70px 10px;
+  border: 0.1px solid;
+  background: #f5f5f5;
+}
+.stringitem2 {
+  width: 410px;
+  padding: 70px 10px;
+  border: 0.1px solid;
+  font-weight: bold;
+}
+.bottom {
+  margin-bottom: 40px;
+}
+
 @media screen and (max-width: 479px) {
   .mailtext {
     font-size: 13px;
   }
   .textcenter {
-    text-align: center;
     font-size: 15px;
     margin: 30px 0px;
-  }
-  .error {
-    color: red;
-  }
-  .flex {
-    display: flex;
-    justify-content: center;
-  }
-  .item {
-    width: 160px;
-    border: 0.1px solid;
-    padding: 10px;
-    background: #f5f5f5;
-  }
-  .item2 {
-    width: 410px;
-    padding: 10px;
-    border: 0.1px solid;
-    font-weight: bold;
-  }
-  .stringitem {
-    width: 160px;
-    padding: 70px 10px;
-    border: 0.1px solid;
-    background: #f5f5f5;
-  }
-  .stringitem2 {
-    width: 410px;
-    padding: 70px 10px;
-    border: 0.1px solid;
-    font-weight: bold;
-  }
-  .bottom {
-    margin-bottom: 40px;
-  }
-}
-
-@media screen and (min-width: 767px) {
-  /*ウィンドウ幅が767px以上の場合に適用*/
-
-  .textcenter {
-    text-align: center;
-  }
-  .error {
-    color: red;
-  }
-  .flex {
-    display: flex;
-    justify-content: center;
-  }
-  .item {
-    width: 160px;
-    border: 0.1px solid;
-    padding: 10px;
-    background: #f5f5f5;
-  }
-  .item2 {
-    width: 410px;
-    padding: 10px;
-    border: 0.1px solid;
-    font-weight: bold;
-  }
-  .stringitem {
-    width: 160px;
-    padding: 70px 10px;
-    border: 0.1px solid;
-    background: #f5f5f5;
-  }
-  .stringitem2 {
-    width: 410px;
-    padding: 70px 10px;
-    border: 0.1px solid;
-    font-weight: bold;
-  }
-  .bottom {
-    margin-bottom: 40px;
   }
 }
 </style>

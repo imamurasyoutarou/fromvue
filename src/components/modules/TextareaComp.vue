@@ -308,6 +308,7 @@ export default {
   name: "textareaComp",
   data() {
     return {
+      //エラーメッセージ
       nameerror: "",
       furiganaerror: "",
       emailerror: "",
@@ -316,6 +317,7 @@ export default {
       impressionerror: ""
     };
   },
+  //inputタグから離れた時に入力の値が正しいかを判定
   methods: {
     surnameBlur() {
       if (this.surname == false && this.name == false) {
@@ -380,6 +382,7 @@ export default {
   },
 
   computed: {
+    //storeに値を送信
     surname: {
       get() {
         return this.$store.state.surname;
@@ -508,6 +511,7 @@ export default {
         this.$store.commit("updateisChecked", value);
       }
     },
+    // storeから値を受け取る
     ...mapGetters("Textarea", {
       error: "getError"
     })
@@ -517,100 +521,122 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.customertext {
+  text-align: center;
+}
+.note {
+  color: grey;
+}
+.margin {
+  margin: 30px 0px 5px 0px;
+}
+
+.box {
+  padding: 2px;
+  margin-right: 3px;
+  background: #000;
+}
+.required {
+  padding: 3px;
+  background-color: red;
+  color: white;
+  font-size: 1px;
+}
+.any {
+  padding: 2.5px;
+  border: 0.5px solid;
+  color: black;
+  font-size: 1px;
+}
+
+.nameinput {
+  padding: 10px;
+  font-size: 15px;
+  background: #f5f5f5;
+  border: none;
+}
+
+.postnumber1input {
+  padding: 10px;
+  font-size: 15px;
+  background: #f5f5f5;
+  border: none;
+}
+.postnumber2input {
+  padding: 10px;
+  font-size: 15px;
+  background: #f5f5f5;
+  border: none;
+}
+
+.inputStyle {
+  padding: 10px;
+  font-size: 15px;
+  background: #f5f5f5;
+  border: none;
+}
+textarea {
+  font-size: 100%;
+  font-size: 15px;
+  background: #f5f5f5;
+  border: none;
+}
+select {
+  padding: 10px;
+  font-size: 15px;
+  background: none transparent;
+  -webkit-appearance: button;
+  background: #f5f5f5;
+  border: none;
+}
+.error {
+  color: red;
+  text-align: center;
+  align-items: center;
+  font-size: 13px;
+}
+.ischeckedArea {
+  margin: 30px;
+  text-align: center;
+}
+.checkbox {
+  margin: 20px 0px;
+}
 @media screen and (max-width: 479px) {
   form {
     margin: 35px;
   }
   .customertext {
-    text-align: center;
     margin-top: 50px;
   }
+
   .note {
-    color: grey;
     font-size: 10px;
   }
   .namemargin,
   .selectedmargin {
     margin: 0px 0px 5px 0px;
   }
-  .margin {
-    margin: 30px 0px 5px 0px;
-  }
-  .box {
-    padding: 2px;
-    margin-right: 3px;
-    background: #000;
-  }
-  .required {
-    padding: 3px;
-    background-color: red;
-    color: white;
-    font-size: 1px;
-  }
-  .any {
-    padding: 2.5px;
-    border: 0.5px solid;
-    color: black;
-    font-size: 1px;
-  }
+
   .nameinput {
-    padding: 10px;
     width: 130px;
-    font-size: 15px;
-    background: #f5f5f5;
-    border: none;
   }
   .postnumber1input {
-    padding: 10px;
     width: 80px;
-    font-size: 15px;
-    background: #f5f5f5;
-    border: none;
   }
   .postnumber2input {
-    padding: 10px;
     width: 158px;
-    font-size: 15px;
-    background: #f5f5f5;
-    border: none;
   }
 
   .inputStyle {
-    padding: 10px;
     width: 282px;
-    font-size: 15px;
-    background: #f5f5f5;
-    border: none;
   }
   textarea {
     width: 296px;
-    font-size: 100%;
     height: 250px;
-    font-size: 15px;
-    background: #f5f5f5;
-    border: none;
   }
   select {
-    padding: 10px;
     width: 300px;
-    font-size: 15px;
-    background: none transparent;
-    -webkit-appearance: button;
-    background: #f5f5f5;
-    border: none;
-  }
-  .error {
-    color: red;
-    text-align: center;
-    align-items: center;
-    font-size: 13px;
-  }
-  .ischeckedArea {
-    margin: 30px;
-    text-align: center;
-  }
-  .checkbox {
-    margin: 20px 0px;
   }
 }
 
@@ -621,18 +647,15 @@ export default {
   .selectedmargin {
     margin: 0px 0px 5px 0px;
   }
-  .margin {
-    margin: 30px 0px 5px 0px;
-  }
+
   .customertext {
-    text-align: center;
     margin-top: 50px;
   }
 
   .note {
-    color: grey;
     font-size: 12px;
   }
+
   .nameArea,
   .furiganaArea,
   .companyArea,
@@ -647,86 +670,31 @@ export default {
     display: flex;
     justify-content: center;
   }
-  .ischeckedArea {
-    text-align: center;
-    margin: 30px;
-  }
-  .required {
-    padding: 3px;
-    background-color: red;
-    color: white;
-    font-size: 1px;
-  }
-  .any {
-    padding: 2.5px;
-    border: 0.5px solid;
-    color: black;
-    font-size: 1px;
-  }
-  .box {
-    padding: 2px;
-    margin-right: 3px;
-    background: #000;
-  }
-  .error {
-    color: red;
-    text-align: center;
-    align-items: center;
-    font-size: 13px;
-  }
 
   .nameinput {
-    padding: 10px;
     width: 300px;
-    font-size: 15px;
-    background: #f5f5f5;
-    border: none;
   }
+
   .postnumber1input {
-    padding: 10px;
-    font-size: 15px;
     width: 230px;
-    background: #f5f5f5;
-    border: none;
   }
   .postnumber2input {
-    padding: 10px;
-    font-size: 15px;
     width: 350px;
-    background: #f5f5f5;
-    border: none;
   }
 
   .inputStyle {
-    padding: 10px;
     width: 628px;
-    font-size: 15px;
-    background: #f5f5f5;
-    border: none;
   }
   textarea {
     width: 645px;
-    font-size: 15px;
-    font-size: 100%;
     height: 250px;
-    background: #f5f5f5;
-    border: none;
   }
   select {
-    padding: 10px;
     width: 650px;
-    font-size: 15px;
-    background: none transparent;
-    -webkit-appearance: button;
-    background: #f5f5f5;
-    border: none;
   }
   .bottom {
     margin: 40px;
     font-size: 18px;
-  }
-  .checkbox {
-    margin: 20px 0px;
   }
 }
 </style>
