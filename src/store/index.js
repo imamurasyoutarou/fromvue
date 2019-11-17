@@ -30,7 +30,10 @@ const Form = {
                 rootState.errorFlag2 &&
                 rootState.errorFlag3 &&
                 rootState.errorFlag4 &&
-                rootState.errorFlag5) {
+                rootState.errorFlag5 &&
+                rootState.errorFlag6 &&
+                rootState.errorFlag7 &&
+                rootState.errorFlag8) {
                 commit('setStepCount', null, { root: true })//rootへのアクセス
             }
             if (rootState.stepCount == 2) {
@@ -257,52 +260,56 @@ export default new Vuex.Store({
         updateSurName(state, value) {
             state.surname = value
             if (state.surname) {
-                state.errorFlag6 = true
-            } else {
-                state.errorFlag6 = false
-            }
-        },
-        updateName(state, value) {
-            state.name = value
-            if (state.name) {
                 state.errorFlag = true
             } else {
                 state.errorFlag = false
             }
         },
-        updateSurnameFurigana(state, value) {
-            state.surnamefurigana = value
-            if (state.surnamefurigana) {
-                state.errorFlag7 = true
-            } else {
-                state.errorFlag7 = false
-            }
-        },
-        updateFurigana(state, value) {
-            state.furigana = value
-            if (state.furigana) {
+        updateName(state, value) {
+            state.name = value
+            if (state.name) {
                 state.errorFlag2 = true
             } else {
                 state.errorFlag2 = false
+            }
+        },
+        updateSurnameFurigana(state, value) {
+            const reg = /^[あ-ん゛゜ぁ-ぉゃ-ょー「」、]+/;
+            state.surnamefurigana = value
+            if (state.surnamefurigana && reg.test(state.surnamefurigana)) {
+                state.errorFlag3 = true
+            } else {
+                state.errorFlag3 = false
+            }
+        },
+        updateFurigana(state, value) {
+            const reg = /^[あ-ん゛゜ぁ-ぉゃ-ょー「」、]+/;
+            state.furigana = value
+            if (state.furigana && reg.test(state.furigana)) {
+                state.errorFlag4 = true
+            } else {
+                state.errorFlag4 = false
             }
         },
         updateCompany(state, value) {
             state.company = value
         },
         updateEmail(state, value) {
+            const reg = /^\S+@\S+\.\S+$/;
             state.email = value
-            if (state.email) {
-                state.errorFlag3 = true
+            if (state.email && reg.test(state.email)) {
+                state.errorFlag5 = true
             } else {
-                state.errorFlag3 = false
+                state.errorFlag5 = false
             }
         },
         updateCheckemail(state, value) {
+            const reg = /^\S+@\S+\.\S+$/;
             state.checkemail = value
-            if (state.checkemail) {
-                state.errorFlag8 = true
+            if (state.checkemail && reg.test(state.checkemail) && state.email === state.checkemail) {
+                state.errorFlag6 = true
             } else {
-                state.errorFlag8 = false
+                state.errorFlag6 = false
             }
         },
         updatePostnumber1(state, value) {
@@ -326,17 +333,17 @@ export default new Vuex.Store({
         updateSubject(state, value) {
             state.subject = value
             if (state.subject) {
-                state.errorFlag4 = true
+                state.errorFlag7 = true
             } else {
-                state.errorFlag4 = false
+                state.errorFlag7 = false
             }
         },
         updateImpression(state, value) {
             state.impression = value
             if (state.impression) {
-                state.errorFlag5 = true
+                state.errorFlag8 = true
             } else {
-                state.errorFlag5 = false
+                state.errorFlag8 = false
             }
         },
         updateisChecked(state, value) {

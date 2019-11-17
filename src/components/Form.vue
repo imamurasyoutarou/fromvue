@@ -37,10 +37,8 @@ import StringComp from "@/components/modules/StringComp";
 import Explanation from "@/components/modules/Explanation";
 import Thank from "@/components/modules/Thank";
 import { mapActions, mapGetters } from "vuex";
-
 export default {
   name: "Form",
-
   //値をstoreに送る
   methods: mapActions("Form", {
     buttonAction: "buttonAction",
@@ -102,21 +100,17 @@ export default {
   img {
     width: 300px;
   }
-
   .explanation {
     margin: 40px;
   }
-
   .header {
     font-size: 14px;
-
     margin: 50px 40px;
   }
   .mainbutton {
     margin-bottom: 50px;
     width: 282px;
   }
-
   .editbutton {
     width: 282px;
     margin-top: 10px;
@@ -127,17 +121,14 @@ export default {
   img {
     width: 320px;
   }
-
   .textarea {
     margin-top: 50px;
   }
-
   .thanktext {
     text-align: center;
     margin: 80px;
     font-size: 25px;
   }
-
   .header {
     font-size: 20px;
     margin: 50px 330px;
@@ -146,7 +137,6 @@ export default {
     width: 300px;
     margin-bottom: 50px;
   }
-
   .flex {
     display: flex;
     justify-content: center;
