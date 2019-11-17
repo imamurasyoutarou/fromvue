@@ -69,7 +69,7 @@ export default {
   text-align: center;
   border-bottom: 1px solid;
   font-size: 14px;
-  margin: 50px 100px;
+  margin: 40px;
 }
 .mainbutton {
   padding: 10px;
@@ -106,13 +106,15 @@ img {
 }
 
 .mainbutton {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   width: 282px;
 }
 .editbutton {
   width: 282px;
 }
-
+.body {
+  margin-bottom: 50px;
+}
 /*ウィンドウ幅が767px以上の場合に適用*/
 @media screen and (min-width: 767px) {
   img {
