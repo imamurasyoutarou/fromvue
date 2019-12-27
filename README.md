@@ -3,15 +3,13 @@
 
 # Overview
 ***  
-YAMAP STOREのお問い合わせフォームがGoogleフォームだったので、YAMAP STOREのお問い合わせフォームをイメージして作りました。
+お問い合わせフォーム
 
 # 提出したプログラムの動作の確認手順
 ***  
 git cloneしてもらってnpm installしてもらえればひらけます。  
 firebaseファイルの中のfirebase.jsの中身は個人の情報のため記述を控えてます。
 デプロイもしてますので下記URLからも確認できます。
-
-URL https://eager-raman-ba9e55.netlify.com
 
 送信ボタンを押したあとはコンソールにてお問い合わせ内容が確認できます。  
 Firebaseとも連携してますのでお問い合わせ内容はFirestoreに送られます。
